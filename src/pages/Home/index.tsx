@@ -7,7 +7,7 @@ import Navbar from 'components/Navbar';
 
 const Home = () => {
 	return (
-		<MaxWidth maxWidth={'1200px'} style={{ margin: '0 50px' }}>
+		<MaxWidth maxWidth={'1200px'} style={{ padding: '0 50px' }}>
 			<Container>
 				{/* <ScrollToTop /> */}
 				<Navbar />

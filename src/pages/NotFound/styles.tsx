@@ -27,7 +27,8 @@ export const NotFoundParticle = styled.div`
 
 	z-index: -1;
 
-	transition: all 3s ease-in-out;
+	transition: left 3s ease-in-out, top 3s ease-in-out;
+	transform: translateZ(0); // to enable hardware acceleration
 `;
 
 export const NotFoundContainer = styled.div`

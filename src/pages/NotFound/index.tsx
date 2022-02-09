@@ -1,5 +1,4 @@
 import Arrow, { Colors, Rotation } from 'common/Arrow';
-import { useInternalScript } from 'hooks/useScript';
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NotFoundBackground, NotFoundContainer, NotFoundDescription, NotFoundLink, NotFoundParticle, NotFoundTitle } from './styles';
@@ -13,17 +12,18 @@ const NotFound = () => {
 	// glitch timer
 	useEffect(() => {
 		const glitch = () => {
-			titleRef.current?.classList.add('animate');
+			if (!titleRef.current) return;
 
-			// wait until animation is done
-			setTimeout(() => {
-				titleRef.current?.classList.remove('animate');
+			titleRef.current.classList.add('animate');
 
-				// animate next time after some delay (from .5s to 3s)
-				setTimeout(() => {
-					glitch();
-				}, Math.floor(Math.random() * 3000) + 500);
-			}, 1000);
+			titleRef.current.addEventListener('animationend', function animationEnd() {
+				if (!titleRef.current) return;
+
+				titleRef.current.classList.remove('animate');
+				titleRef.current.removeEventListener('animationend', animationEnd);
+
+				setTimeout(glitch, Math.floor(Math.random() * 3000) + 500);
+			});
 		};
 
 		glitch();
@@ -34,12 +34,29 @@ const NotFound = () => {
 		const move = () => {
 			if (!particleRef.current) return;
 
+			const transitionEnd = {
+				top: false,
+				left: false,
+			};
+
+			particleRef.current.addEventListener('transitionend', function func({ propertyName }: TransitionEvent) {
+				if (!particleRef.current) return;
+
+				if (propertyName === 'top') {
+					transitionEnd.top = true;
+				} else if (propertyName === 'left') {
+					transitionEnd.left = true;
+				}
+
+				if (Object.values(transitionEnd).every(Boolean)) {
+					particleRef.current.removeEventListener('transitionend', func);
+
+					setTimeout(move, Math.floor(Math.random() * 3000) + 500);
+				}
+			});
+
 			particleRef.current.style.left = `${Math.floor(Math.random() * 102) - 2}%`;
 			particleRef.current.style.top = `${Math.floor(Math.random() * 102) - 2}vh`;
-
-			setTimeout(() => {
-				setTimeout(move, Math.floor(Math.random() * 3000) + 500);
-			}, Math.floor(Math.random() * 5000) + 2000);
 		};
 
 		move();

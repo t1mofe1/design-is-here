@@ -18,7 +18,7 @@ export const StyledNavbar = styled.nav<JustifyAlign>`
 `;
 
 export const StyledNavMenu = styled(Row)`
-	gap: 4em;
+	width: 50%;
 `;
 
 export const StyledNavMenuItem = styled.div<JustifyAlign>`
