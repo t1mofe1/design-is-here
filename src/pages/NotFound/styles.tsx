@@ -38,14 +38,16 @@ export const NotFoundContainer = styled.div`
 	justify-content: center;
 	height: 100vh;
 	width: 100%;
+
+	padding: 0 1rem;
 `;
 
 export const NotFoundTitle = styled.h1`
 	font-family: Micra;
-	font-size: 200px;
+	font-size: clamp(10px, 20vw, 200px);
 
 	margin-top: 0;
-	margin-bottom: 75px;
+	margin-bottom: clamp(0px, 5vw, 75px);
 
 	position: relative;
 
@@ -250,8 +252,7 @@ export const NotFoundDescription = styled.span`
 	font-family: Golca;
 	font-weight: 300;
 
-	font-size: 36px;
-	line-height: 47px;
+	font-size: clamp(10px, 10vw, 36px);
 
 	text-align: center;
 `;
@@ -268,7 +269,7 @@ export const NotFoundLink = styled.div`
 	margin-top: 25px;
 
 	> span {
-		font-size: 38px;
+		font-size: clamp(10px, 7.5vw, 38px);
 
 		white-space: nowrap;
 	}
@@ -281,14 +282,14 @@ export const NotFoundLink = styled.div`
 
 	&::after {
 		position: absolute;
-		bottom: -5px;
+		bottom: calc(clamp(1px, 1vw, 5px) * -1);
 
 		content: '';
 
 		display: inline-block;
 
 		margin: auto;
-		height: 5px;
+		height: clamp(1px, 1vw, 5px);
 		background-color: transparent;
 		width: 0%;
 		transition: width 0.2s ease, background-color 0.4s ease;
