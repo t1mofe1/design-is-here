@@ -1,21 +1,17 @@
-import Arrow, { Rotation } from 'common/Arrow';
-import Container from 'common/Container';
-import ScrollToTop from 'common/ScrollToTop';
+import { StyledContainer } from './styles';
+import MaxWidthContext from 'context/maxWidthContext';
 import Header from 'components/Header';
-import MaxWidth from 'components/MaxWidth';
-import Navbar from 'components/Navbar';
 
 const Home = () => {
 	return (
-		<MaxWidth maxWidth={'1200px'} style={{ padding: '0 50px' }}>
-			<Container>
+		<MaxWidthContext.Provider value={'1200px'}>
+			<StyledContainer>
+				<Header />
 				{/* <ScrollToTop /> */}
-				<Navbar />
-				{/* <Header /> */}
 				{/* <ServicesSection />
 			<PortfolioSection /> */}
-			</Container>
-		</MaxWidth>
+			</StyledContainer>
+		</MaxWidthContext.Provider>
 	);
 };
 

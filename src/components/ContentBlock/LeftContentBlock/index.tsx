@@ -1,6 +1,3 @@
-import Row from 'common/Row';
-import Col from 'common/Col';
-import { SvgIcon } from 'common/SvgIcon';
 import { ContentBlockProps } from 'components/ContentBlock/types';
 import { Fade } from 'react-awesome-reveal';
 import { LeftContentSection, Content, ContentWrapper, ServiceWrapper, MinTitle, MinPara } from './styles';
@@ -10,11 +7,10 @@ const LeftContentBlock = ({ icon, title, content, section, t, id }: ContentBlock
 	return (
 		<LeftContentSection>
 			<Fade direction="left">
-				<Row justifyContent={JustifyContentEnum.spaceBetween} alignItems={AlignItemsEnum.center} id={id}>
-					{/* <Col lg={11} md={11} sm={12} xs={24}>
+				{/* <Col lg={11} md={11} sm={12} xs={24}>
 						<SvgIcon src={icon} width="100%" height="100%" />
 					</Col> */}
-					{/* <Col lg={11} md={11} sm={11} xs={24}>
+				{/* <Col lg={11} md={11} sm={11} xs={24}>
 						<ContentWrapper>
 							<h6>{t(title)}</h6>
 							<Content>{t(content)}</Content>
@@ -34,7 +30,6 @@ const LeftContentBlock = ({ icon, title, content, section, t, id }: ContentBlock
 							</ServiceWrapper>
 						</ContentWrapper>
 					</Col> */}
-				</Row>
 			</Fade>
 		</LeftContentSection>
 	);

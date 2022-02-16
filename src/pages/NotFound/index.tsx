@@ -1,4 +1,5 @@
-import Arrow, { Colors, Rotation } from 'common/Arrow';
+import Arrow from 'common/Arrow';
+import { Colors, Rotation } from 'utils/constants';
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NotFoundBackground, NotFoundContainer, NotFoundDescription, NotFoundLink, NotFoundParticle, NotFoundTitle } from './styles';

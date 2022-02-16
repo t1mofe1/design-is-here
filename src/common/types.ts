@@ -1,8 +1,8 @@
 import React from 'react';
 
 export type ContainerProps = {
-	border?: boolean;
 	children: React.ReactNode;
+	style?: React.CSSProperties;
 };
 
 export type ButtonProps = {
@@ -13,12 +13,6 @@ export type ButtonProps = {
 	onClick?: () => void;
 };
 
-export type SvgIconProps = {
-	src: string;
-	width: string;
-	height: string;
-};
-
 export type InputProps = {
 	name: string;
 	placeholder: string;
@@ -26,12 +20,6 @@ export type InputProps = {
 	type?: string;
 	value?: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
-};
-
-export type validateProps = {
-	name: string;
-	message: string;
-	email: string;
 };
 
 export enum JustifyContentEnum {
@@ -73,8 +61,4 @@ export type RowProps = {
 	children: React.ReactNode;
 	style?: React.CSSProperties;
 	id?: string;
-};
-
-export type ColProps = {
-	children: React.ReactNode;
 };

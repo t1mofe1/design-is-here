@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { SvgIcon } from '../SvgIcon';
 import { ScrollUpContainer } from './styles';
 import { getScroll } from '../utils/getWindow';
 
@@ -18,14 +17,12 @@ const ScrollToTop = () => {
 
 	useEffect(() => {
 		window.addEventListener('scroll', checkScrollTop);
-		return () => {
-			window.removeEventListener('scroll', checkScrollTop);
-		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+
+		return () => window.removeEventListener('scroll', checkScrollTop);
 	}, []);
 
 	const scrollUp = () => {
-		const element = document.getElementById('intro') as HTMLDivElement;
+		const element = document.getElementById('#root')?.children[0].children[0] as HTMLDivElement;
 		element.scrollIntoView({
 			behavior: 'smooth',
 			block: 'end',
@@ -35,7 +32,7 @@ const ScrollToTop = () => {
 
 	return (
 		<ScrollUpContainer onClick={scrollUp} show={showScroll}>
-			<SvgIcon src="scroll-top.svg" width="20px" height="20px" />
+			<img src="/scroll-top.svg" width="20px" height="20px" />
 		</ScrollUpContainer>
 	);
 };

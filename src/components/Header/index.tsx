@@ -1,64 +1,41 @@
-import { useState } from 'react';
-
-import Container from 'common/Container';
-import { SvgIcon } from 'common/SvgIcon';
-import { Button } from 'common/Button';
-
-import { HeaderSection, Burger, LogoContainer, NotHidden, Menu, CustomNavLinkSmall, Label, Span } from './styles';
-import Row from 'common/Row';
-import Col from 'common/Col';
 import { JustifyContentEnum } from 'common/types';
+import config from 'config';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import Link from 'common/Link';
+import MaxWidthContext from 'context/maxWidthContext';
+import { HeaderAuthorContainer, HeaderAuthorText, HeaderContainer, NavMenu, NavMenuItem } from './styles';
+import { Burger } from 'components/Burger';
+import { Colors } from 'utils/constants';
 
-const Header = ({ t }: any) => {
-	const MenuItem = () => {
-		const scrollTo = (id: string) => {
-			const element = document.getElementById(id) as HTMLDivElement;
-			element.scrollIntoView({
-				behavior: 'smooth',
-			});
-		};
+export default function Navbar() {
+	const maxWidth = useContext(MaxWidthContext);
 
-		return (
-			<>
-				<CustomNavLinkSmall onClick={() => scrollTo('about')}>{/* <Span>{t?.('About')}</Span> */}</CustomNavLinkSmall>
-				<CustomNavLinkSmall onClick={() => scrollTo('portfolio')}>{/* <Span>{t?.('Portfolio')}</Span> */}</CustomNavLinkSmall>
-				<CustomNavLinkSmall style={{ width: '180px' }} onClick={() => scrollTo('contact')}>
-					<Span>{/* <Button>{t?.('Contact')}</Button> */}</Span>
-				</CustomNavLinkSmall>
-			</>
-		);
-	};
+	const navMenuRef = useRef<HTMLElement>(null);
+
+	function handleBurgerClick(burger: HTMLButtonElement, state: boolean) {
+		if (!navMenuRef.current) return;
+
+		navMenuRef.current.classList[state ? 'add' : 'remove']('show');
+		document.body.classList[state ? 'add' : 'remove']('lock');
+	}
 
 	return (
-		<HeaderSection>
-			<Container>
-				<Row justifyContent={JustifyContentEnum.spaceBetween}>
-					<LogoContainer to="/" aria-label="Homepage">
-						{/* <SvgIcon src="logo.svg" width="101px" height="64px" /> */}
-					</LogoContainer>
-					<NotHidden>
-						<MenuItem />
-					</NotHidden>
-					{/* <Burger onClick={showDrawer}>
-					<Outline />
-					</Burger> */}
-				</Row>
-				{/* <Drawer closable={false} visible={visible} onClose={onClose}>
-					<Col style={{ marginBottom: '2.5rem' }}>
-						<Label onClick={onClose}>
-							<Col span={12}>
-								<Menu>Menu</Menu>
-							</Col>
-							<Col span={12}>
-								<Outline />
-							</Col>
-						</Label>
-					</Col>
-					<MenuItem />
-				</Drawer> */}
-			</Container>
-		</HeaderSection>
-	);
-};
+		<HeaderContainer style={{ maxWidth }}>
+			<Burger onClick={handleBurgerClick} color={Colors.Pink} />
 
-export default Header;
+			<NavMenu ref={navMenuRef}>
+				{config.navbar.links.map(({ name, dataURL, url, newTab }) => (
+					<NavMenuItem key={name}>
+						<Link dataHref={dataURL} href={url} target={newTab ? '_blank' : undefined}>
+							{name}
+						</Link>
+					</NavMenuItem>
+				))}
+			</NavMenu>
+
+			<HeaderAuthorContainer>
+				<HeaderAuthorText>{config.navbar.author}</HeaderAuthorText>
+			</HeaderAuthorContainer>
+		</HeaderContainer>
+	);
+}

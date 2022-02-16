@@ -1,7 +1,24 @@
+import React from 'react';
 import { StyledLink } from './styles';
 
-export default function Link({ href, children }: React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) {
-	if (!href) href = '#';
+type LinkProps = React.PropsWithChildren<React.AnchorHTMLAttributes<HTMLAnchorElement>> & {
+	dataHref?: string;
+};
 
-	return <StyledLink href={href}>{children}</StyledLink>;
+export default function Link({ children, dataHref, ...props }: LinkProps) {
+	const linkRef = React.useRef<HTMLAnchorElement>(null);
+
+	const hrefElement = dataHref && document.querySelector(dataHref);
+
+	if (linkRef.current && hrefElement) {
+		linkRef.current.addEventListener('click', () => {
+			hrefElement.scrollIntoView({ behavior: 'smooth' });
+		});
+	}
+
+	return (
+		<StyledLink {...props} ref={linkRef}>
+			{children}
+		</StyledLink>
+	);
 }

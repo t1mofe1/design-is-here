@@ -1,5 +1,3 @@
-import Row from 'common/Row';
-import Col from 'common/Col';
 import { Slide } from 'react-awesome-reveal';
 import { Button } from '../../common/Button';
 import { MiddleBlockSection, Content, ContentWrapper } from './styles';
@@ -22,9 +20,8 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
 	return (
 		<MiddleBlockSection>
 			<Slide direction="up">
-				<Row justifyContent={JustifyContentEnum.center} alignItems={AlignItemsEnum.center}>
-					<ContentWrapper>
-						{/* <Col lg={24} md={24} sm={24} xs={24}>
+				<ContentWrapper>
+					{/* <Col lg={24} md={24} sm={24} xs={24}>
 							<h6>{t(title)}</h6>
 							<Content>{t(content)}</Content>
 							{button && (
@@ -33,8 +30,7 @@ const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
 								</Button>
 							)}
 						</Col> */}
-					</ContentWrapper>
-				</Row>
+				</ContentWrapper>
 			</Slide>
 		</MiddleBlockSection>
 	);
