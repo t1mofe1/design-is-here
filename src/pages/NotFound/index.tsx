@@ -1,8 +1,15 @@
 import Arrow from 'common/Arrow';
 import { Colors, Rotation } from 'utils/constants';
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NotFoundBackground, NotFoundContainer, NotFoundDescription, NotFoundLink, NotFoundParticle, NotFoundTitle } from './styles';
+import { createGlobalStyle } from 'styled-components';
+
+const RemoveOverflowFromBody = createGlobalStyle`
+	body {
+		overflow-y: hidden;
+	}
+`;
 
 const NotFound = () => {
 	const navigate = useNavigate();
@@ -65,6 +72,7 @@ const NotFound = () => {
 
 	return (
 		<>
+			<RemoveOverflowFromBody />
 			<NotFoundContainer>
 				<NotFoundBackground src={'/404_background.svg'} alt="404 Background" />
 				<NotFoundParticle ref={particleRef} />

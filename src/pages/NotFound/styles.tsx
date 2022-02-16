@@ -10,7 +10,7 @@ export const NotFoundBackground = styled.img`
 	width: 100%;
 	max-height: 100vh;
 
-	z-index: -5;
+	z-index: 0;
 `;
 
 export const NotFoundParticle = styled.div`
@@ -25,7 +25,7 @@ export const NotFoundParticle = styled.div`
 	background: rgba(255, 25, 122, 0.75);
 	filter: blur(60px);
 
-	z-index: -1;
+	z-index: 0;
 
 	transition: left 3s ease-in-out, top 3s ease-in-out;
 	transform: translateZ(0); // to enable hardware acceleration

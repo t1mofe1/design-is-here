@@ -44,6 +44,8 @@ img {
 body {
   font-family: Micra, sans-serif;
 
+  overflow-x: hidden;
+
   width: 100%;
   height: 100vh;
 
