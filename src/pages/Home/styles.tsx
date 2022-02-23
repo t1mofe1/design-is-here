@@ -8,7 +8,7 @@ export const StyledContainer = styled.div`
 
 	width: 100%;
 
-	padding: 0 2rem;
+	padding: 0 3em;
 
 	position: relative;
 `;

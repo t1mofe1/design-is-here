@@ -1,33 +1,33 @@
 import styled from 'styled-components';
-import { ReactComponent as BurgerIcon } from 'assets/svg/burger.svg';
 import config from 'config';
+import { BurgerState } from '.';
 
-export const BurgerContainer = styled.button`
+type BurgerContainerProps = {
+	state: BurgerState;
+};
+export const BurgerContainer = styled.button<BurgerContainerProps>`
+	width: 25px;
 	height: 25px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
 
 	z-index: 9;
 
 	border: none;
+	background: transparent;
 
 	cursor: url(/cursor_link.png), pointer;
 
 	@media screen and (min-width: 768px) {
 		display: none;
 	}
-`;
 
-export const BurgerSvg = styled(BurgerIcon)`
-	width: 25px;
-	height: 25px;
-
-	display: inline-block;
-
-	@media screen and (min-width: 768px) {
-		display: none;
-	}
-
-	// #region outT
-	@keyframes outT {
+	// #region burger lines
+	// #region keyframes
+	@keyframes closeT {
 		0% {
 			transform: translateY(10px) rotate(45deg) scale(1.1);
 		}
@@ -38,9 +38,7 @@ export const BurgerSvg = styled(BurgerIcon)`
 			transform: translateY(0px) rotate(0deg);
 		}
 	}
-	// #endregion
-	// #region inT
-	@keyframes inT {
+	@keyframes openT {
 		0% {
 			transform: translateY(0px) rotate(0deg);
 		}
@@ -51,42 +49,7 @@ export const BurgerSvg = styled(BurgerIcon)`
 			transform: translateY(10px) rotate(45deg) scale(1.1);
 		}
 	}
-	// #endregion
-	// #region outBtm
-	@keyframes outBtm {
-		0% {
-			width: 100%;
-			transform: translateY(-10px) rotate(-45deg) scale(1.1);
-			/* or 135deg */
-		}
-		50% {
-			width: 100%;
-			transform: translateY(-10px) rotate(0deg) scale(1.1);
-		}
-		100% {
-			width: 50%;
-			transform: translateY(0px) rotate(0deg);
-		}
-	}
-	// #endregion
-	// #region inBtm
-	@keyframes inBtm {
-		0% {
-			transform: translateY(0px) rotate(0deg);
-			width: 50%;
-		}
-		50% {
-			transform: translateY(-10px) rotate(0deg) scale(1.1);
-			width: 100%;
-		}
-		100% {
-			transform: translateY(-10px) rotate(-45deg) scale(1.1);
-			/* or 135deg */
-		}
-	}
-	// #endregion
-	// #region outM
-	@keyframes outM {
+	@keyframes closeM {
 		0% {
 			width: 0%;
 		}
@@ -100,9 +63,7 @@ export const BurgerSvg = styled(BurgerIcon)`
 			width: 100%;
 		}
 	}
-	// #endregion
-	// #region inM
-	@keyframes inM {
+	@keyframes openM {
 		0% {
 			width: 100%;
 		}
@@ -116,38 +77,83 @@ export const BurgerSvg = styled(BurgerIcon)`
 			width: 0%;
 		}
 	}
-	// #endregion
+	@keyframes closeBtm {
+		0% {
+			width: 100%;
+			transform: translateY(-10px) rotate(-45deg) scale(1.1);
+			/* or 135deg */
+		}
+		50% {
+			width: 100%;
+			transform: translateY(-10px) rotate(0deg) scale(1.1);
+		}
+		100% {
+			width: 50%;
+			transform: translateY(0px) rotate(0deg);
+		}
+	}
+	@keyframes openBtm {
+		0% {
+			transform: translateY(0px) rotate(0deg);
+			width: 50%;
+		}
+		50% {
+			transform: translateY(-10px) rotate(0deg) scale(1.1);
+			width: 100%;
+		}
+		100% {
+			transform: translateY(-10px) rotate(-45deg) scale(1.1);
+			/* or 135deg */
+		}
+	}
+	// #endregion keyframes
 
-	path {
-		fill: ${config.colors.black};
+	> div {
+		width: 25px;
+		height: 5px;
+
+		border-radius: 5px;
+
+		background-color: ${config.colors.black};
 
 		animation-duration: 0.8s;
-		animation-fill-mode: forwards;
 
 		&:nth-child(1) {
-			animation-name: outT;
+			// INITIAL STATE
+			${({ state }) =>
+				state === BurgerState.Opened &&
+				`
+					transform: translateY(10px) rotate(45deg) scale(1.1);
+			`}
+
+			animation-name: ${({ state }) => (state === BurgerState.Initalized ? '' : state === BurgerState.Opened ? `openT` : `closeT`)};
 		}
 		&:nth-child(2) {
-			animation-name: outM;
-			fill: ${config.colors.pink};
+			background-color: ${config.colors.pink};
+
+			// INITIAL STATE
+			${({ state }) =>
+				state === BurgerState.Opened &&
+				`
+				width: 0%;
+			`}
+
+			animation-name: ${({ state }) => (state === BurgerState.Initalized ? '' : state === BurgerState.Opened ? `openM` : `closeM`)};
 		}
 		&:nth-child(3) {
-			animation-name: outBtm;
-		}
-	}
+			width: 50%;
+			transition: width 0.1s;
 
-	#hamburger.opened {
-		path {
-			&:nth-child(1) {
-				animation-name: inT;
-			}
-			&:nth-child(2) {
-				animation-name: inM;
-			}
-			&:nth-child(3) {
-				animation-name: inBtm;
-				transition: width 1.6s;
-			}
+			// INITIAL STATE
+			${({ state }) =>
+				state === BurgerState.Opened &&
+				`
+				width: 100%;
+				transform: translateY(-10px) rotate(-45deg) scale(1.1);
+			`}
+
+			animation-name: ${({ state }) => (state === BurgerState.Initalized ? '' : state === BurgerState.Opened ? `openBtm` : `closeBtm`)};
 		}
 	}
+	// #endregion burger lines
 `;

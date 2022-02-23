@@ -26,8 +26,8 @@ img {
 // #region fonts
 @font-face {
   font-family: Golca;
-  src:  url(/fonts/Golca.woff2) format("woff2"),
-        url(/fonts/Golca.woff) format("woff");
+  src:  url(/fonts/Golca.woff2) format('woff2'),
+        url(/fonts/Golca.woff) format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -35,7 +35,8 @@ img {
 @font-face {
   font-family: Micra;
   src:  url(/fonts/Micra.woff2) format("woff2"),
-        url(/fonts/Micra.woff) format("woff");
+        url(/fonts/Micra.woff) format("woff"),
+        url(/fonts/Micra.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
 }

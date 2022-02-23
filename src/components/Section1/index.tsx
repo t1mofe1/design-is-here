@@ -1,26 +1,17 @@
-import Arrow from 'common/Arrow';
-import { Rotation } from 'utils/constants';
-import { StyledHeader, StyledHeaderContainer, StyledHeaderDescription, StyledHeaderImage, StyledHeaderTitle } from './styles';
+import { Section, SectionContainer, SectionDescription, SectionImage, SectionImageContainer, StyledLogo } from './styles';
 
-type HeaderProps = {};
+type Section1Props = {};
 
-const Header = ({}: HeaderProps) => {
+export default function Section1({}: Section1Props) {
 	return (
-		<StyledHeader>
-			<StyledHeaderContainer>
-				<StyledHeaderTitle>
-					<span>Дизайн</span>
-					<span>
-						Ну Вот Же Он <Arrow rotate={Rotation.Down_Right} />
-					</span>
-				</StyledHeaderTitle>
-				<StyledHeaderDescription>Я разрабоатываю современные и стильные сайты для вашего бизнеса.</StyledHeaderDescription>
-			</StyledHeaderContainer>
-			<StyledHeaderContainer>
-				<StyledHeaderImage src={'/header_img.jpg'} alt={'Header image'} />
-			</StyledHeaderContainer>
-		</StyledHeader>
+		<Section>
+			<SectionContainer>
+				<StyledLogo />
+				<SectionDescription>Я разрабатываю современные и стильные сайты для вашего бизнеса.</SectionDescription>
+			</SectionContainer>
+			<SectionImageContainer>
+				<SectionImage src={'/design_is_here.gif'} alt={'Design is here gif'} />
+			</SectionImageContainer>
+		</Section>
 	);
-};
-
-export default Header;
+}
