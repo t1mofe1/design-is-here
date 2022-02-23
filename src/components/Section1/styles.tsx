@@ -31,10 +31,10 @@ export const SectionContainer = styled('div')`
 	flex-direction: column;
 
 	@media screen and (min-width: 576px) {
-		max-width: 50%;
+		max-width: 45%;
 	}
 
-	row-gap: 35px;
+	row-gap: 2.5em;
 `;
 
 export const StyledLogo = styled(Logo)``;
@@ -49,6 +49,20 @@ export const SectionDescription = styled('p')`
 
 export const SectionImageContainer = styled(SectionContainer)`
 	flex: 1 1 auto;
+
+	width: 100%;
+	max-width: unset;
+
+	margin-top: 2.5em;
+	@media screen and (min-width: 576px) {
+		margin-top: 0;
+	}
+
+	@media screen and (min-width: 576px) {
+		width: unset;
+	}
 `;
 
-export const SectionImage = styled('img')``;
+export const SectionImage = styled('img')`
+	width: 100%;
+`;
