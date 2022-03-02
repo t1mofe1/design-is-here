@@ -70,4 +70,24 @@ body {
   cursor: url(cursor_default.png), auto;
 }
 
+// TYPOGRAPHY
+html {
+  font-size: 100%;
+}
+
+// #region h1
+h1 {
+    font-size: 2.25rem; // 36px
+}
+@media (min-width: 414px){
+  h1 {
+    font-size: calc(2.25rem + (((100vw - 20rem) / (90 - 20))) * (4.75 - 2.25)); // fluidly scale
+  }
+}
+@media (min-width: 1440px){
+  h1 {
+    font-size: 4.75rem; // 76px
+  }
+}
+// #endregion
 `;

@@ -30,6 +30,28 @@ const config = {
 		],
 		author: 'blinkova regina',
 	},
+	services: [
+		{
+			title: 'Дизайн сайта в Figma',
+			description: 'Дизайн сайта в Figma',
+		},
+		{
+			title: 'Верстка сайта на Tilda',
+			description: 'Верстка сайта на Tilda',
+		},
+		{
+			title: 'Разработка логотипа',
+			description: 'Разработка логотипа',
+		},
+		{
+			title: 'Разработка инфопродуктов',
+			description: 'Разработка инфопродуктов',
+		},
+		{
+			title: 'Постеры, иллюстрации и др.',
+			description: 'Постеры, иллюстрации и др.',
+		},
+	],
 };
 
 export default config;

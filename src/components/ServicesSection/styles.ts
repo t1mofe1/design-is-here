@@ -2,18 +2,22 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
 	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	flex-direction: column;
+
+	width: 100%;
+
+	padding-bottom: 6em;
+
+	padding: 3em 0em 0em;
 `;
 
-export const SectionContainer = styled.div`
-	display: flex;
+export const SectionTitle = styled.h1`
+	font-family: Micra;
 `;
 
-export const SectionTitle = styled.h2``;
-
-export const ServicesContainer = styled.div``;
-
-export const ServiceCard = styled.div``;
-
-export const ServiceCardTitle = styled.h3``;
-
-export const ServiceCardDescription = styled.p``;
+export const ServicesContainer = styled.div`
+	width: 75%;
+`;

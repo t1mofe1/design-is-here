@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
 
-export const Section = styled('section')`
+export const Section = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -23,7 +23,7 @@ export const Section = styled('section')`
 	}
 `;
 
-export const SectionContainer = styled('div')`
+export const SectionContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -39,12 +39,11 @@ export const SectionContainer = styled('div')`
 
 export const StyledLogo = styled(Logo)``;
 
-export const SectionTitle = styled('h1')``;
+export const SectionTitle = styled.h1``;
 
-export const SectionDescription = styled('p')`
+export const SectionDescription = styled.p`
 	font-family: Golca;
 	font-weight: 300;
-	font-size: 24px;
 `;
 
 export const SectionImageContainer = styled(SectionContainer)`
@@ -63,6 +62,6 @@ export const SectionImageContainer = styled(SectionContainer)`
 	}
 `;
 
-export const SectionImage = styled('img')`
+export const SectionImage = styled.img`
 	width: 100%;
 `;

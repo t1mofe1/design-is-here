@@ -2,16 +2,17 @@ import { StyledContainer } from './styles';
 import MaxWidthContext from 'context/maxWidthContext';
 import Header from 'components/Header';
 import Section1 from 'components/Section1';
+import ServicesSection from 'components/ServicesSection';
 
 const Home = () => {
 	return (
 		<MaxWidthContext.Provider value={'1300px'}>
-			<StyledContainer as={'main'}>
+			<StyledContainer style={{ maxWidth: '1300px' }} as={'main'}>
 				<Header />
 				<Section1 />
+				<ServicesSection />
 				{/* <ScrollToTop /> */}
-				{/* <ServicesSection />
-			<PortfolioSection /> */}
+				{/* <PortfolioSection /> */}
 			</StyledContainer>
 		</MaxWidthContext.Provider>
 	);

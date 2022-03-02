@@ -44,7 +44,7 @@ export const NotFoundContainer = styled.div`
 
 export const NotFoundTitle = styled.h1`
 	font-family: Micra;
-	font-size: clamp(10px, 20vw, 200px);
+	font-size: 7.5rem;
 
 	margin-top: 0;
 	margin-bottom: clamp(0px, 5vw, 75px);
@@ -76,6 +76,7 @@ export const NotFoundTitle = styled.h1`
 		}
 	}
 
+	// #region keyframes
 	@keyframes glitch {
 		0%,
 		20%,
@@ -246,13 +247,14 @@ export const NotFoundTitle = styled.h1`
 			clip: rect(10px, 9999px, 87px, 0);
 		}
 	}
+	// #endregion
 `;
 
 export const NotFoundDescription = styled.span`
 	font-family: Golca;
 	font-weight: 300;
 
-	font-size: clamp(10px, 10vw, 36px);
+	font-size: 2rem;
 
 	text-align: center;
 `;
@@ -269,7 +271,7 @@ export const NotFoundLink = styled.div`
 	margin-top: 25px;
 
 	> span {
-		font-size: clamp(10px, 7.5vw, 38px);
+		font-size: 2rem;
 
 		white-space: nowrap;
 	}

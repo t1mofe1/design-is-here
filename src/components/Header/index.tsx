@@ -13,6 +13,21 @@ export default function Header() {
 	const headerRef = useRef<HTMLElement>(null);
 	const navMenuRef = useRef<HTMLElement>(null);
 
+	const [blurred, setBlurred] = useState(false);
+	useEffect(() => {
+		const root = document.querySelector('#root') as HTMLElement;
+
+		function handleScroll() {
+			const { scrollTop } = root;
+			setBlurred(scrollTop > 100);
+		}
+
+		root.addEventListener('scroll', handleScroll);
+		return () => {
+			root.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
 	const handleBurgerClick = useCallback(({ newState }: BurgerOnClickProps) => {
 		if (!navMenuRef.current) return;
 
@@ -45,7 +60,7 @@ export default function Header() {
 	}, []);
 
 	return (
-		<HeaderContainer ref={headerRef} style={{ maxWidth }}>
+		<HeaderContainer blurred={blurred} ref={headerRef} style={{ maxWidth }}>
 			<Burger onClick={handleBurgerClick} />
 
 			<NavMenu ref={navMenuRef}>

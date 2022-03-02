@@ -2,11 +2,21 @@ import Text from 'common/Text';
 import config from 'config';
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.header`
+type HeaderContainerProps = {
+	blurred: boolean;
+};
+export const HeaderContainer = styled.header<HeaderContainerProps>`
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
+
+	${({ blurred }) =>
+		blurred &&
+		`background: rgba(255, 255, 255, 0.27);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(7px);
+		`}
 
 	margin: 0 auto;
 
@@ -17,15 +27,9 @@ export const HeaderContainer = styled.header`
 
 	padding: 2em 3em;
 
-	z-index: 1;
+	z-index: 5;
 
-	transition: transform 0.3s;
-
-	@media screen and (min-width: 768px) {
-		background-color: transparent;
-		box-shadow: none;
-		transition: background-color 0.5s ease 0s;
-	}
+	transition: transform 0.3s, background 0.2s, box-shadow 0.2s, backdrop-filter 0.2s;
 `;
 
 export const NavMenu = styled.nav`

@@ -6,6 +6,6 @@ export enum Colors {
 export enum Rotation {
 	Up_Left = '0deg',
 	Up_Right = '90deg',
-	Down_Left = '-90deg',
+	Down_Left = '270deg',
 	Down_Right = '180deg',
 }
